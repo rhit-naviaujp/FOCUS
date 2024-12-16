@@ -1,0 +1,4 @@
+# ninja log v5
+2	13716	1709644431261045247	/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/build/temp.linux-x86_64-3.8/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.o	986c16fd3884fc52
+2	33328	1709644450884924014	/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/build/temp.linux-x86_64-3.8/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/src/vision.o	7a6d58ff54611bcc
+2	42679	1709644460244866070	/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/build/temp.linux-x86_64-3.8/vhome/youzuyao/COD/models/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.o	679a87434503806a
