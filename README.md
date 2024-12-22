@@ -10,7 +10,7 @@
   <img src="assets/focus_framework.png" width="90%" height="90%">
 </p>
 
-We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egmentation framework that can handle multiple foreground tasks with one unified architechture. To achieve boundary-aware segmentation, we develop a multi-scale semantic network using the edge information of objects to enhance image features and propose a novel distillation method, integrating the contrastive learning strategy to refine the prediction mask in multi-modal feature space. Extensive experiments demonstrate that FOCUS achieves SoTA performance across five foreground segmentation tasks, including Salient Object Detection (SOD), Camouflaged Object Detection (COD), Shadow Detection (SD), Defocus Blur Detection (DBD) and Foregery Detection (FD).
+We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egmentation framework that can handle multiple foreground tasks with one unified architecture. To achieve boundary-aware segmentation, we develop a multi-scale semantic network using the edge information of objects to enhance image features and propose a novel distillation method, integrating the contrastive learning strategy to refine the prediction mask in multi-modal feature space. Extensive experiments demonstrate that FOCUS achieves SoTA performance across five foreground segmentation tasks, including Salient Object Detection (SOD), Camouflaged Object Detection (COD), Shadow Detection (SD), Defocus Blur Detection (DBD), and Forgery Detection (FD).
 
 
 ## 🚀News
@@ -18,7 +18,7 @@ We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egment
 
 
 * [2024.12.16] Our code is released! Feel free to contact us if you have any questions!
-* [2024.12.10] Our paper has been accpted by AAAI2025!🔥
+* [2024.12.10] Our paper has been accepted by AAAI2025!🔥
 
 ## 🛠️Getting Started
 
@@ -112,7 +112,7 @@ datasets/
 │   └── Imgs
 ```
 
-and run the corresbonding dataset preparation script by running:
+and run the corresponding dataset preparation script by running:
 
 ```
 python utils/prepare/prepare_<dataset>.py
@@ -123,7 +123,7 @@ python utils/prepare/prepare_<dataset>.py
 
 ### Prepare Pretrained Weights
 
-download pretrained DINOv2 weights by:
+download pre-trained DINOv2 weights by:
 
 ```
 #dinov2-g
@@ -146,9 +146,6 @@ python utils/convert_dinov2.py ./ckpt/dinov2_vitl14_reg4_pretrain.pth ./ckpt/din
 
 
 ## Training
-
-for local training, you can use the command
-
 ```
 python train_net.py \
 --config-file path/to/your/config \
@@ -179,4 +176,4 @@ year={2025},
 ```
 
 ## 🌟Acknowledgements
-FOCUS is built upon [Mask2Former](https://github.com/facebookresearch/Mask2Former), [CLIP](https://github.com/openai/CLIP), [ViT-Adapter](https://github.com/czczup/ViT-Adapter), [OVSeg](https://github.com/facebookresearch/ov-seg/), and [detectron2](https://github.com/facebookresearch/detectron2). Thanks for their awesome works!
+FOCUS is built upon [Mask2Former](https://github.com/facebookresearch/Mask2Former), [CLIP](https://github.com/openai/CLIP), [ViT-Adapter](https://github.com/czczup/ViT-Adapter), [OVSeg](https://github.com/facebookresearch/ov-seg/), and [detectron2](https://github.com/facebookresearch/detectron2). We express our gratitude to the authors for their remarkable work.
