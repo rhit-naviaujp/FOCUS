@@ -17,7 +17,7 @@ We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egment
 
 
 
-* [2024.12.16] Our code is released! Feel free to contact us if you have any questions!
+* [2024.12.16] Our code is released! Feel free to contact us if you have any question!
 * [2024.12.10] Our paper has been accpted by AAAI2025!🔥
 
 ## 🛠️Getting Started
@@ -179,4 +179,4 @@ year={2025},
 ```
 
 ## 🌟Acknowledgements
-FOCUS is built upon [Mask2Former](https://github.com/facebookresearch/Mask2Former), [CLIP](https://github.com/openai/CLIP), [ViT-Adapter](https://github.com/czczup/ViT-Adapter), [OVSeg](https://github.com/facebookresearch/ov-seg/), and [detectron2](https://github.com/facebookresearch/detectron2). Thanks for their awesome works!
+FOCUS is built upon [Mask2Former](https://github.com/facebookresearch/Mask2Former), [CLIP](https://github.com/openai/CLIP), [ViT-Adapter](https://github.com/czczup/ViT-Adapter), [OVSeg](https://github.com/facebookresearch/ov-seg/), and [detectron2](https://github.com/facebookresearch/detectron2). Thanks the authors for their amazing works!
