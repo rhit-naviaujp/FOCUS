@@ -803,15 +803,16 @@ class EdgeEnhancer(TIMMVisionTransformer):
                     W_toks,
                 )
             outs.append(x.transpose(1, 2).view(bs, dim, H_toks, W_toks).contiguous())
-
+        mask = None
         #PCA for feature mask initialization
-        fg_pca = PCA(n_components=1)
-        patch_tokens = x.cpu().detach().numpy().reshape([bs,dim,-1])
-        all_patches = patch_tokens.reshape([-1,dim])
-        reduced_patches = fg_pca.fit_transform(all_patches)
-        norm_patches = minmax_scale(reduced_patches)
-        image_norm_patches = norm_patches.reshape(*(bs,H_toks,W_toks))
-        mask = (image_norm_patches > 0.6).astype(np.uint8) 
+        if self.training:
+            fg_pca = PCA(n_components=1)
+            patch_tokens = x.cpu().detach().numpy().reshape([bs,dim,-1])
+            all_patches = patch_tokens.reshape([-1,dim])
+            reduced_patches = fg_pca.fit_transform(all_patches)
+            norm_patches = minmax_scale(reduced_patches)
+            image_norm_patches = norm_patches.reshape(*(bs,H_toks,W_toks))
+            mask = (image_norm_patches > 0.6).astype(np.uint8) 
 
 
         # Split & Reshape

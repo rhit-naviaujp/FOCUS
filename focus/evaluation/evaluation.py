@@ -129,6 +129,7 @@ class UNIFIEDEvaluator(DatasetEvaluator):
             self._tasks = tasks
 
         self._cpu_device = torch.device("cpu")
+        self.dataset_name = dataset_name
 
         self._metadata = MetadataCatalog.get(dataset_name)
         if not hasattr(self._metadata, "json_file"):
@@ -223,35 +224,41 @@ class UNIFIEDEvaluator(DatasetEvaluator):
 
             pred_masks = [x["segmentation"] for x in instances]
             gt_masks = self._coco_api.loadAnns(self._coco_api.getAnnIds(imgIds=prediction["image_id"]))
-            metrics = ["MAE","SM","EM","WFM","BER","F1","AUC","MFM","FM"]
+            metrics = ["MAE","SM","EM","WFM","BER","F1","AUC","FM"]
 
             for pred_mask, gt_mask in zip(pred_masks, gt_masks):
 
                 pred_binary_mask = np.array(mask_util.decode(pred_mask), dtype=np.float32)
                 gt_binary_mask = np.array(mask_util.decode(gt_mask["segmentation"]), dtype=np.float32)
 
-                result1, result2, result3, result4, result8, result9 =utils.calc_metrics(pred_binary_mask,gt_binary_mask)
-                result5 = utils.calc_ber(pred_binary_mask,gt_binary_mask)
-                result6,result7,_,_ = utils.calc_f1(pred_binary_mask,gt_binary_mask)
+                result1, result2, result3, result4, result9 =utils.calc_metrics(pred_binary_mask,gt_binary_mask)
+                if self.dataset_name != "pascal":
+                    result5 = utils.calc_ber(pred_binary_mask,gt_binary_mask)
+                    result6,result7,_,_ = utils.calc_f1(pred_binary_mask,gt_binary_mask)
                 mae_scores.append(result4)
                 s_measure_scores.append(result1)
                 e_measure_scores.append(result2)
                 wfm_scores.append(result3)
-                ber_scores.append(result5)
-                f1_score.append(result6)
-                auc_score.append(result7)
-                f_max_scores.append(result8)
+                if self.dataset_name != "pascal":
+                    ber_scores.append(result5)
+                    f1_score.append(result6)
+                    auc_score.append(result7)
                 fm_scores.append(result9)
         mean_mae = np.mean(mae_scores)
         mean_s_measure = np.mean(s_measure_scores)
         mean_e_measure = np.mean(e_measure_scores)
         mean_wfm = np.mean(wfm_scores)
-        mean_ber = np.mean(ber_scores)
-        mean_f1 = np.mean(f1_score)
-        mean_auc = np.mean(auc_score)
-        mean_f_max = np.mean(f_max_scores)
+        if self.dataset_name != "pascal":
+            mean_ber = np.mean(ber_scores)
+            mean_f1 = np.mean(f1_score)
+            mean_auc = np.mean(auc_score)
+        else:
+            mean_ber = np.nan
+            mean_f1 = np.nan
+            mean_auc = np.nan
+
         mean_fm = np.mean(fm_scores)
-        results = [mean_mae,mean_s_measure,mean_e_measure,mean_wfm,mean_ber,mean_f1,mean_auc,mean_f_max,mean_fm]
+        results = [mean_mae,mean_s_measure,mean_e_measure,mean_wfm,mean_ber,mean_f1,mean_auc,mean_fm]
         res = {
             metric: float(results[idx] if results[idx] >= 0 else "nan")
             for idx, metric in enumerate(metrics)
@@ -263,7 +270,6 @@ class UNIFIEDEvaluator(DatasetEvaluator):
                             ("BER", {"Value": mean_ber}),
                             ("F1", {"Value": mean_f1}),
                             ("AUC", {"Value": mean_auc}),
-                            ("MFM", {"Value": mean_f_max}),
                             ("FM", {"Value": mean_fm})]
 
         # Logging the results for visibility

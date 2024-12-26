@@ -52,7 +52,7 @@ MODEL:
     DEEP_SUPERVISION: True
     NO_OBJECT_WEIGHT: 0.1
     CLASS_WEIGHT: 1.0
-    CLIP_WEIGHT: 1.0
+    CLIP_WEIGHT: 0.01
     MASK_WEIGHT: 5.0
     DICE_WEIGHT: 5.0
     COS_WEIGHT: 1.0
@@ -92,7 +92,7 @@ MODEL:
     REGION_RESIZED: True # resize to the input of clip, e.g., 224
     CLIP_ENSEMBLE: True # use ensemble of two classification branches
     CLIP_ENSEMBLE_WEIGHT: 0.7
-    PROMPTS: ["It’s an image of an object without background.", "It’s an image of background with an object removed."]
+    PROMPTS: ["It’s an image of forgery objects without background.", "It’s an image of background with forgery objects removed."]
 
 DATASETS:
   TRAIN: ("casia_train",)

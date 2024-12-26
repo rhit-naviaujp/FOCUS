@@ -243,14 +243,14 @@ def setup(args):
 
     cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
-    # now = datetime.now()
-    # folder_name = os.path.join("outputs",now.strftime("%m%d%H%M"))
-    # if args.resume:
-    #     output_dir = os.path.join(folder_name,cfg.MODEL.WEIGHTS.split('/')[-2])
-    # else:
-    #     output_dir = os.path.join(folder_name,str(os.getenv('SLURM_JOB_ID', 'No Job ID Found')))
+    now = datetime.now()
+    folder_name = os.path.join("outputs",now.strftime("%m%d%H%M"))
+    if args.resume:
+        output_dir = os.path.join(folder_name,cfg.MODEL.WEIGHTS.split('/')[-2])
+    else:
+        output_dir = os.path.join(folder_name,str(os.getenv('SLURM_JOB_ID', 'No Job ID Found')))
 
-    # cfg.OUTPUT_DIR = output_dir
+    cfg.OUTPUT_DIR = output_dir
     cfg.freeze()
     default_setup(cfg, args)
     if cfg.TEST.WANDBENABLE:

@@ -93,7 +93,7 @@ MODEL:
 
 DATASETS:
   TRAIN: ("cod10k_train","cod_train",)
-  TEST: ("cod_val",) #"nc4k","cod10k_val",) #"chameleon",)
+  TEST: ("cod_val","nc4k","cod10k_val","chameleon",)
 SOLVER:
   IMS_PER_BATCH: 8
   BASE_LR: 0.0001

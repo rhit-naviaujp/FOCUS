@@ -167,21 +167,21 @@ def calc_metrics(y_pred, y_true):
     with torch.no_grad():
         if y_pred.shape != y_true.shape:
             raise ValueError("y_pred and y_true should have the same shape.")
-        f_max = 0
+        # f_max = 0
 
-        true = torch.from_numpy(y_true)
-        pred = torch.from_numpy(y_pred)
+        # true = torch.from_numpy(y_true)
+        # pred = torch.from_numpy(y_pred)
 
-        pred = (pred - torch.min(pred)) / (torch.max(pred) - torch.min(pred) + 1e-20)
-        gt = true
+        # pred = (pred - torch.min(pred)) / (torch.max(pred) - torch.min(pred) + 1e-20)
+        # gt = true
 
-        prec, recall = _eval_pr(pred, gt, 255)
-        f_score = (1 + 0.3) * prec * recall / (0.3 * prec + recall)
-        f_score[f_score != f_score] = 0  # for Nan
-        f_max += f_score.max()
+        # prec, recall = _eval_pr(pred, gt, 255)
+        # f_score = (1 + 0.3) * prec * recall / (0.3 * prec + recall)
+        # f_score[f_score != f_score] = 0  # for Nan
+        # f_max += f_score.max()
+
         true, pred = \
             y_true * 255, y_pred * 255
-
         metric_FM.step(pred=pred, gt=true)
         metric_WFM.step(pred=pred, gt=true)
         metric_SM.step(pred=pred, gt=true)
@@ -194,7 +194,7 @@ def calc_metrics(y_pred, y_true):
         em = metric_EM.get_results()["em"]["curve"].mean()
         mae = metric_MAE.get_results()["mae"]
 
-    return sm, em, wfm, mae, f_max, fm
+    return sm, em, wfm, mae,  fm
 
 
 from sklearn.metrics import roc_auc_score,precision_recall_curve, f1_score, roc_curve

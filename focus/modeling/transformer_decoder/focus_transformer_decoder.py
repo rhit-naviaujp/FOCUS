@@ -445,15 +445,16 @@ class MultiScaleMaskedTransformerDecoder(nn.Module):
         binary_token = []
         is_train = feature["is_train"]
         # prediction heads on learnable query features
-        outputs_class, outputs_mask, _ ,clip_features,outputs_bbox= self.forward_prediction_heads(output, mask_features, images, is_train, attn_mask_target_size=size_list[0])
-        _, labels = torch.max(outputs_class, dim=2)
-        feature_mask = torch.from_numpy(feature["feature_mask"]).cpu()
-        attn_mask = F.interpolate(feature_mask.unsqueeze(1), size=(size_list[0][0],size_list[0][1]), mode="bilinear", align_corners=False)
-        attn_mask = (attn_mask - attn_mask.min()) / (attn_mask.max() - attn_mask.min())
-        reversed_mask = 1- attn_mask 
-        attn_mask = torch.cat((attn_mask, reversed_mask), dim=1) if labels[0][0] == 0 else torch.cat((reversed_mask, attn_mask), dim=1)
-        attn_mask = (attn_mask.sigmoid().flatten(2).unsqueeze(1).repeat(1, self.num_heads, 1, 1).flatten(0, 1) < 0.5).bool()
-        attn_mask = attn_mask.to(device=outputs_mask.device).detach()
+        outputs_class, outputs_mask, attn_mask ,clip_features,outputs_bbox= self.forward_prediction_heads(output, mask_features, images, is_train, attn_mask_target_size=size_list[0])
+        if self.training:
+            _, labels = torch.max(outputs_class, dim=2)
+            feature_mask = torch.from_numpy(feature["feature_mask"]).cpu()
+            attn_mask = F.interpolate(feature_mask.unsqueeze(1), size=(size_list[0][0],size_list[0][1]), mode="bilinear", align_corners=False)
+            attn_mask = (attn_mask - attn_mask.min()) / (attn_mask.max() - attn_mask.min())
+            reversed_mask = 1- attn_mask 
+            attn_mask = torch.cat((attn_mask, reversed_mask), dim=1) if labels[0][0] == 0 else torch.cat((reversed_mask, attn_mask), dim=1)
+            attn_mask = (attn_mask.sigmoid().flatten(2).unsqueeze(1).repeat(1, self.num_heads, 1, 1).flatten(0, 1) < 0.5).bool()
+            attn_mask = attn_mask.to(device=outputs_mask.device).detach()
         predictions_class.append(outputs_class)
         predictions_mask.append(outputs_mask)
         predictions_bbox.append(outputs_bbox)

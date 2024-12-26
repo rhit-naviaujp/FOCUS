@@ -411,7 +411,7 @@ class FOCUS(nn.Module):
 
         result = Instances(image_size)
         # mask (before sigmoid)
-        result.pred_masks = (mask_pred>0).float()
+        result.pred_masks = (mask_pred.sigmoid()).float()
         result.pred_boxes = Boxes(torch.zeros(mask_pred.size(0), 4))
         # Uncomment the following to get boxes from masks (this is slow)
         # result.pred_boxes = BitMasks(mask_pred > 0).get_bounding_boxes()
@@ -420,6 +420,7 @@ class FOCUS(nn.Module):
         mask_scores_per_image = (mask_pred.sigmoid().flatten(1) * result.pred_masks.flatten(1)).sum(1) / (result.pred_masks.flatten(1).sum(1) + 1e-6)
         result.scores = scores_per_image * mask_scores_per_image
         result.pred_classes = labels_per_image
+        # merged_mask = result.pred_masks[(result.pred_classes == 0).nonzero(as_tuple=True)[0][result.scores[(result.pred_classes == 0)].argmax()]]
         merged_mask = self._merge_mask(result)
         result = Instances(image_size)
         result.pred_masks = merged_mask
