@@ -2,6 +2,7 @@
 
 # FOCUS: Towards Universal Foreground Segmentation
 
+<a href='https://geshang777.github.io/focus.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
 
 
 ## 💡Overview
@@ -51,7 +52,7 @@ cd focus/modeling/pixel_decoder/ops && sh make.sh && cd ../../../../
 ### Quick Start
 
 
-We provide an inference demo here if you want to try out the our model. You should download the weights from our Model Zoo first and run the following command. Make sure that you use the config file conrresbonding to the download weights.
+We provide an inference demo here if you want to try out the our model. You should download the weights from our Model Zoo (coming soon) first and run the following command. Make sure that you use the config file conrresbonding to the download weights.
 
 ```
 python demo/demo.py --config-file path/to/your/config \
