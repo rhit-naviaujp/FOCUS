@@ -3,6 +3,7 @@
 # FOCUS: Towards Universal Foreground Segmentation
 
 <a href='https://geshang777.github.io/focus.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
+<a href='https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl'><img src='https://img.shields.io/badge/Google_Drive-Model-orange' /></a>
 
 
 ## 💡Overview
@@ -17,7 +18,7 @@ We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egment
 ## 🚀News
 
 
-
+* [2025.01.03] [FOCUS(DINOv2-G)](https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl) checkpoints are now opensource. You can follow the guidelines [here](#quick-start) to quickly leverage the state-of-the-art performance of our model. Hope you enjoy it!
 * [2024.12.16] Our code is released! Feel free to contact us if you have any questions!
 * [2024.12.10] Our paper has been accepted by AAAI2025!🔥
 
