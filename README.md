@@ -53,7 +53,7 @@ cd focus/modeling/pixel_decoder/ops && sh make.sh && cd ../../../../
 ### Quick Start
 
 
-We provide an inference demo here if you want to try out the our model. You should download the weights from our Model Zoo (coming soon) first and run the following command. Make sure that you use the config file conrresbonding to the download weights.
+We provide an inference demo here if you want to try out the our model. You should download the weights from our [Model Zoo](https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl) first and run the following command. Make sure that you use the config file conrresbonding to the download weights.
 
 ```
 python demo/demo.py --config-file path/to/your/config \
