@@ -22,7 +22,7 @@ We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egment
 * [2024.12.16] Our code is released! Feel free to contact us if you have any questions!
 * [2024.12.10] Our paper has been accepted by AAAI2025!🔥
 
-## 🛠️Getting Started
+## Getting Started
 
 ### Environment Setup
 * We use CUDA 12.2 for implementation.
