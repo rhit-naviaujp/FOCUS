@@ -6,7 +6,7 @@
 <a href='https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl'><img src='https://img.shields.io/badge/Google_Drive-Model-orange' /></a>
 
 
-## 💡Overview
+## Overview
 
 <p align="center">
   <img src="assets/focus_framework.png" width="90%" height="90%">
@@ -15,7 +15,7 @@
 We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egmentation framework that can handle multiple foreground tasks with one unified architecture. To achieve boundary-aware segmentation, we develop a multi-scale semantic network using the edge information of objects to enhance image features and propose a novel distillation method, integrating the contrastive learning strategy to refine the prediction mask in multi-modal feature space. Extensive experiments demonstrate that FOCUS achieves SoTA performance across five foreground segmentation tasks, including Salient Object Detection (SOD), Camouflaged Object Detection (COD), Shadow Detection (SD), Defocus Blur Detection (DBD), and Forgery Detection (FD).
 
 
-## 🚀News
+## News
 
 
 * [2025.01.03] [FOCUS(DINOv2-G)](https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl) checkpoints and [prediction results](https://drive.google.com/drive/folders/1Wz7x379hBSgtereYgw2Y8LMBiUV6g0J9) are now opensource. You can follow the guidelines [here](#quick-start) to quickly leverage the state-of-the-art performance of our model. Hope you enjoy it!
@@ -163,7 +163,7 @@ python train_net.py --eval-only \
 MODEL.WEIGHTS path/to/your/weights
 ```
 
-## 📚Citation
+## Citation
 
 If you think our work is helpful, please star this repo and cite our paper!
 
@@ -177,5 +177,5 @@ year={2025},
 }
 ```
 
-## 🌟Acknowledgements
+## Acknowledgements
 FOCUS is built upon [Mask2Former](https://github.com/facebookresearch/Mask2Former), [CLIP](https://github.com/openai/CLIP), [ViT-Adapter](https://github.com/czczup/ViT-Adapter), [OVSeg](https://github.com/facebookresearch/ov-seg/), and [detectron2](https://github.com/facebookresearch/detectron2). We express our gratitude to the authors for their remarkable work.
