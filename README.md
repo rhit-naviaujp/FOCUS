@@ -30,7 +30,7 @@ We introduce **FOCUS**, **F**oreground **O**bje**C**ts **U**niversal **S**egment
 * We train our models on  2 NVIDIA A6000 GPUs with 48G memory, please make sure that your VRAM is sufficient to avoid the potential OOM issues during training.
 
 
-```
+```bash
 #create environment
 conda create --name focus python=3.8
 conda activate focus
@@ -55,7 +55,7 @@ cd focus/modeling/pixel_decoder/ops && sh make.sh && cd ../../../../
 
 We provide an inference demo here if you want to try out the our model. You should download the weights from our [Model Zoo](https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl) first and run the following command. Make sure that you use the config file conrresbonding to the download weights.
 
-```
+```bash
 python demo/demo.py --config-file path/to/your/config \
   --input path/to/your/image \
   --output path/to/your/output_file \
@@ -116,7 +116,7 @@ datasets/
 
 and run the corresponding dataset preparation script by running:
 
-```
+```bash
 python utils/prepare/prepare_<dataset>.py
 
 # e.g. python utils/prepare/prepare_camo.py
@@ -127,7 +127,7 @@ python utils/prepare/prepare_<dataset>.py
 
 download pre-trained DINOv2 weights by:
 
-```
+```bash
 #dinov2-g
 wget -P ./ckpt https://dl.fbaipublicfiles.com/dinov2/dinov2_vitg14/dinov2_vitg14_reg4_pretrain.pth
 
@@ -137,7 +137,7 @@ wget -P ./ckpt https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14
 
 and run the following line to convert DINOv2 weights into detectron2 format while prepare ResNet weights for edge enhancer
 
-```
+```bash
 #dinov2-g
 python utils/convert_dinov2.py ./ckpt/dinov2_vitg14_reg4_pretrain.pth ./ckpt/dinov2_vitg14_pretrain_updated.pkl
 
@@ -148,7 +148,7 @@ python utils/convert_dinov2.py ./ckpt/dinov2_vitl14_reg4_pretrain.pth ./ckpt/din
 
 
 ## Training
-```
+```bash
 python train_net.py \
 --config-file path/to/your/config \
 --num-gpus NUM_GPUS
@@ -156,7 +156,7 @@ python train_net.py \
 
 ## Evaluation
 
-```
+```bash
 python train_net.py --eval-only \
 --config-file path/to/your/config \
 --num-gpus NUM_GPUS \
