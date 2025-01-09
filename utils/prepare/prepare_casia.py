@@ -91,7 +91,7 @@ def create_instance_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"CASIA-{dataset_type} in COCO format is saved to {output_file_path}")
 
 def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
     """
@@ -196,7 +196,7 @@ def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"CASIA-{dataset_type} in COCO format is saved to {output_file_path}")
 def merge_folders(src_folder1, src_folder2, dest_folder):
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
@@ -236,57 +236,57 @@ if __name__ == "__main__":
 
 
 
-    # image_folder = "datasets/CASIA/CASIA 1.0 dataset/Tp/"
+    image_folder = "datasets/CASIA/CASIA 1.0 dataset/Tp/"
 
-    # cm_folder = os.path.join(image_folder, "CM")
-    # sp_folder = os.path.join(image_folder, "Sp")
-    # output_folder = "datasets/CASIA/TEST/image"
+    cm_folder = os.path.join(image_folder, "CM")
+    sp_folder = os.path.join(image_folder, "Sp")
+    output_folder = "datasets/CASIA/TEST/image"
 
-    # merge_folders(cm_folder, sp_folder, output_folder)
+    merge_folders(cm_folder, sp_folder, output_folder)
 
-    # gt_folder = "datasets/CASIA/CASIA 1.0 groundtruth"
-    # cm_folder_gt = os.path.join(gt_folder, "CM")
-    # sp_folder_gt = os.path.join(gt_folder, "Sp")
-    # output_folder_gt = "datasets/CASIA/TEST/gt"
+    gt_folder = "datasets/CASIA/CASIA 1.0 groundtruth"
+    cm_folder_gt = os.path.join(gt_folder, "CM")
+    sp_folder_gt = os.path.join(gt_folder, "Sp")
+    output_folder_gt = "datasets/CASIA/TEST/gt"
 
-    # merge_folders(cm_folder_gt, sp_folder_gt, output_folder_gt)
+    merge_folders(cm_folder_gt, sp_folder_gt, output_folder_gt)
 
 
-    # # au_folder = "datasets/CASIA/CASIA2.0_revised/Au"
-    # # tp_folder = "datasets/CASIA/CASIA2.0_revised/Tp"
-    # # output_train_folder_image = "datasets/CASIA/TRAIN/image"
+    # au_folder = "datasets/CASIA/CASIA2.0_revised/Au"
+    # tp_folder = "datasets/CASIA/CASIA2.0_revised/Tp"
+    # output_train_folder_image = "datasets/CASIA/TRAIN/image"
 
-    # # merge_folders(au_folder, tp_folder, output_train_folder_image)
+    # merge_folders(au_folder, tp_folder, output_train_folder_image)
 
-    # src_folder = "datasets/CASIA/CASIA2.0_revised/Tp"
-    # dest_folder = "datasets/CASIA/TRAIN/image"
+    src_folder = "datasets/CASIA/CASIA2.0_revised/Tp"
+    dest_folder = "datasets/CASIA/TRAIN/image"
 
-    # if not os.path.exists(dest_folder):
-    #     os.makedirs(dest_folder)
+    if not os.path.exists(dest_folder):
+        os.makedirs(dest_folder)
 
-    # for filename in os.listdir(src_folder):
-    #     if filename.lower().endswith(('.tif', '.jpg', '.jpeg', '.bmp', '.png', '.gif')):
-    #         src_file = os.path.join(src_folder, filename)
-    #         dest_file = os.path.join(dest_folder, f"{os.path.splitext(filename)[0]}.jpg")
+    for filename in os.listdir(src_folder):
+        if filename.lower().endswith(('.tif', '.jpg', '.jpeg', '.bmp', '.png', '.gif')):
+            src_file = os.path.join(src_folder, filename)
+            dest_file = os.path.join(dest_folder, f"{os.path.splitext(filename)[0]}.jpg")
             
-    #         with Image.open(src_file) as img:
-    #             if img.mode == 'RGBX':
-    #                 img = img.convert('RGBA')
-    #             img.save(dest_file, "PNG")
+            with Image.open(src_file) as img:
+                if img.mode == 'RGBX':
+                    img = img.convert('RGBA')
+                img.save(dest_file, "PNG")
 
-    # src_folder_gt = "datasets/CASIA/CASIA2.0_Groundtruth"
-    # dest_folder_gt = "datasets/CASIA/TRAIN/gt"
+    src_folder_gt = "datasets/CASIA/CASIA2.0_Groundtruth"
+    dest_folder_gt = "datasets/CASIA/TRAIN/gt"
 
-    # if not os.path.exists(dest_folder_gt):
-    #     os.makedirs(dest_folder_gt)
+    if not os.path.exists(dest_folder_gt):
+        os.makedirs(dest_folder_gt)
 
-    # src_files = [os.path.join(src_folder_gt, f) for f in os.listdir(src_folder_gt)]
-    # for file in src_files:
-    #     if os.path.isfile(file):
-    #         shutil.copy(file, dest_folder_gt) 
-    # file_path = "datasets/CASIA/TEST/image/Sp_D_NRN_A_cha0011_sec0011_0542.jpg"
-    # if os.path.exists(file_path):
-    #     os.remove(file_path)
+    src_files = [os.path.join(src_folder_gt, f) for f in os.listdir(src_folder_gt)]
+    for file in src_files:
+        if os.path.isfile(file):
+            shutil.copy(file, dest_folder_gt) 
+    file_path = "datasets/CASIA/TEST/image/Sp_D_NRN_A_cha0011_sec0011_0542.jpg"
+    if os.path.exists(file_path):
+        os.remove(file_path)
 
 
     root = os.getenv("DETECTRON2_DATASETS", "datasets")

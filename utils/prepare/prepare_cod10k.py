@@ -83,7 +83,7 @@ def create_instance_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"COD10K-{dataset_type} in COCO format is saved to {output_file_path}")
 def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
     """
     Convert a COD dataset to COCO format for specified dataset type (Test or Train).
@@ -177,7 +177,7 @@ def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"COD10K-{dataset_type} in COCO format is saved to {output_file_path}")
 def convert(input, output):
     img = np.asarray(Image.open(input))
     assert img.dtype == np.uint8

@@ -84,7 +84,7 @@ def create_instance_dataset(dataset_dir, output_dir):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for saved to {output_file_path}")
+    print(f"PASCAL in COCO format is saved to {output_file_path}")
 
 def create_semantic_dataset(dataset_dir, output_dir):
     """
@@ -179,7 +179,7 @@ def create_semantic_dataset(dataset_dir, output_dir):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for saved to {output_file_path}")
+    print(f"PASCAL in COCO format is saved to {output_file_path}")
 
 def organize_files(base_dir):
     gt_dir = os.path.join(base_dir, 'gt')
@@ -217,7 +217,6 @@ if __name__ == "__main__":
     for name in ["gt"]:
         annotation_dir = Path(os.path.join(dataset_dir ,  name))
         output_dir = Path(os.path.join(dataset_dir , "annotations_detectron2" , name))
-        print(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
         for file in tqdm.tqdm(list(annotation_dir.iterdir())):
             output_file = output_dir / file.name

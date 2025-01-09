@@ -91,7 +91,7 @@ def create_instance_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"DEFOCUS-{dataset_type} in COCO format is saved to {output_file_path}")
 def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
     """
     Convert a COD dataset to COCO format for specified dataset type (Test or Train).
@@ -192,7 +192,7 @@ def create_semantic_dataset(dataset_dir, output_dir, dataset_type):
         os.makedirs(output_dir)
     with open(output_file_path, 'w') as f:
         json.dump(coco_format, f)
-    print(f"COCO dataset for {dataset_type} saved to {output_file_path}")
+    print(f"DEFOCUS-{dataset_type} in COCO format is saved to {output_file_path}")
 def pre_process(directory):
     files = [filename for filename in os.listdir(directory) if os.path.isfile(os.path.join(directory, filename)) and filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif'))]
     
