@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # ------------------------------------------------------------------------------------------------
 # Deformable DETR
 # Copyright (c) 2020 SenseTime. All Rights Reserved.
@@ -9,4 +10,4 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Modified by Bowen Cheng from https://github.com/fundamentalvision/Deformable-DETR
 
-from .ms_deform_attn import MSDeformAttn
+python setup.py build install
