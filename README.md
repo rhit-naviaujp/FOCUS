@@ -131,9 +131,6 @@ download pre-trained DINOv2 weights by:
 ```bash
 #dinov2-g
 wget -P ./ckpt https://dl.fbaipublicfiles.com/dinov2/dinov2_vitg14/dinov2_vitg14_reg4_pretrain.pth
-
-#dinov2-l
-wget -P ./ckpt https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_reg4_pretrain.pth
 ```
 
 and run the following line to convert DINOv2 weights into detectron2 format while prepare ResNet weights for edge enhancer
@@ -141,10 +138,6 @@ and run the following line to convert DINOv2 weights into detectron2 format whil
 ```bash
 #dinov2-g
 python utils/convert_dinov2.py ./ckpt/dinov2_vitg14_reg4_pretrain.pth ./ckpt/dinov2_vitg14_pretrain_updated.pkl
-
-#dinov2-l
-python utils/convert_dinov2.py ./ckpt/dinov2_vitl14_reg4_pretrain.pth ./ckpt/dinov2_vitl14_pretrain_updated.pkl
-
 ```
 
 
