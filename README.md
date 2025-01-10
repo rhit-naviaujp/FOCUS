@@ -1,9 +1,10 @@
 
 
 # FOCUS: Towards Universal Foreground Segmentation
-
-<a href='https://geshang777.github.io/focus.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
+<a href='https://arxiv.org/abs/2501.05238'><img src='https://img.shields.io/badge/ArXiv-Paper-red' /></a>
 <a href='https://drive.google.com/drive/folders/1IcyZnqc4vcsvSUcKb2llYGPt3ClFGjPl'><img src='https://img.shields.io/badge/Google_Drive-Model-orange' /></a>
+<a href='https://geshang777.github.io/focus.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
+
 
 
 ## Overview
